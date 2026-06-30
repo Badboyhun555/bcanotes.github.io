@@ -1,439 +1,577 @@
-# UNIT 3 – Classes, Objects, Constructors, Destructors and Operator Overloading in C++
+# Q1. Explain Classes and Objects in C++. Describe Class Definition, Object Declaration, Data Members, and Member Functions. Write a C++ Program Using a Class to Store and Display Student Information.
 
-# Introduction to Classes and Objects
+## Introduction
 
-Classes and objects are the foundation of Object Oriented Programming (OOP). OOP is based on real-world entities, and classes and objects help programmers represent those entities in software.
+Object-Oriented Programming (OOP) ka sabse important concept Classes aur Objects hain. C++ ek Object-Oriented Programming language hai jo real-world entities ko classes aur objects ke through represent karti hai. Traditional programming languages me data aur functions alag-alag hote the, lekin OOP me data aur functions ko ek single unit me organize kiya jata hai.
 
-Before understanding classes and objects, think about real life.
+Classes aur Objects software development ko modular, reusable aur secure banate hain. Banking systems, Hospital Management Systems, Student Management Systems, E-Commerce Applications aur Multimedia Software jaise modern applications classes aur objects par based hote hain.
 
-Suppose there is a blueprint of a house.
-
-The blueprint only defines:
-- Number of rooms
-- Structure
-- Design
-- Doors and windows
-
-But the blueprint itself is not a real house.
-
-Actual houses are built using that blueprint.
-
-Similarly:
-- Class = Blueprint
-- Object = Real Entity
-
----
+Class ek blueprint ya template hoti hai jabki object us blueprint ka actual instance hota hai. OOP ka pura structure classes aur objects ke concept par based hota hai.
 
 # What is a Class?
 
-A class is a user-defined data type that contains:
-- Data members (variables)
-- Member functions (functions)
+Class ek user-defined data type hoti hai jo data members aur member functions ka collection hoti hai.
 
-A class defines the structure and behavior of objects.
+Class real-world entity ki properties aur behaviors ko represent karti hai.
 
-It acts as a template for creating objects.
+## Definition
 
----
+"A class is a user-defined data type that contains data members and member functions."
 
-# Real Life Example of Class
+Class sirf blueprint hoti hai. Memory tab allocate hoti hai jab object create kiya jata hai.
 
-Suppose we create a class called `Student`.
+## Example
 
-Every student has:
+Student Class:
+
+Properties:
+
 - Name
 - Roll Number
-- Course
 - Marks
 
-And every student can perform:
-- Study()
-- AttendClass()
-- GiveExam()
+Behaviors:
 
-All these things are defined inside the class.
+- Input Data
+- Display Data
 
----
+Yeh sab milkar Student Class banate hain.
 
 # Syntax of Class
 
 ```cpp
 class ClassName
 {
-    data members;
+    private:
+        data_members;
 
-    member functions;
+    public:
+        member_functions;
 };
 ```
 
----
-
-# Example Program of Class
+## Example
 
 ```cpp
-#include<iostream.h>
-#include<conio.h>
-
 class Student
 {
-    public:
-
     int roll;
     char name[20];
 
-    void display()
-    {
-        cout<<"Roll Number: "<<roll;
-        cout<<"\nName: "<<name;
-    }
-};
-
-void main()
-{
-    Student s;
-
-    s.roll=101;
-
-    strcpy(s.name,"Rahul");
-
-    s.display();
-
-    getch();
-}
-```
-
----
-
-# Explanation of Program
-
-## `class Student`
-
-Creates a class named Student.
-
----
-
-## `int roll`
-
-Data member storing roll number.
-
----
-
-## `char name[20]`
-
-Stores student name.
-
----
-
-## `void display()`
-
-Member function to display data.
-
----
-
-## `Student s`
-
-Creates object named `s`.
-
----
-
-## `s.roll=101`
-
-Accessing data member using object.
-
----
-
-## `s.display()`
-
-Calling member function.
-
----
-
-# Memory Allocation in Class
-
-A class itself does not occupy memory.
-
-Memory is allocated only when objects are created.
-
-Example:
-
-```cpp
-Student s1,s2,s3;
-```
-
-Each object gets separate memory.
-
----
-
-# Access Specifiers in Class
-
-Access specifiers control accessibility of members.
-
-Three types:
-1. Private
-2. Public
-3. Protected
-
----
-
-# 1. Private
-
-Private members cannot be accessed directly outside class.
-
-Default access specifier in C++ class is private.
-
----
-
-# Example
-
-```cpp
-class Demo
-{
-    private:
-
-    int x;
+public:
+    void getData();
+    void display();
 };
 ```
 
----
+# Components of a Class
 
-# 2. Public
+Class ke andar mainly do components hote hain:
 
-Public members can be accessed from outside class.
+## Data Members
 
----
+## Member Functions
 
-# Example
+# Data Members
+
+Data Members class ke variables hote hain jo object ki properties ko store karte hain.
+
+### Example
 
 ```cpp
-class Demo
-{
-    public:
-
-    int x;
-};
+int roll;
+char name[20];
+float marks;
 ```
 
----
+Ye variables student ki information store karenge.
 
-# 3. Protected
+## Characteristics of Data Members
 
-Protected members are mainly used in inheritance.
+### Data Storage
 
-They can be accessed in derived classes.
+Object ka data store karte hain.
 
----
+### Encapsulation
+
+Class ke andar protected rehte hain.
+
+### Object Specific
+
+Har object ke paas apni copy hoti hai.
+
+# Member Functions
+
+Member Functions class ke andar define kiye gaye functions hote hain jo data members par operations perform karte hain.
+
+### Example
+
+```cpp
+void getData();
+void display();
+```
+
+## Uses
+
+### Data Input
+
+User se data lene ke liye.
+
+### Data Processing
+
+Calculations perform karne ke liye.
+
+### Data Output
+
+Information display karne ke liye.
+
+# Access Specifiers
+
+Class ke members ko control karne ke liye access specifiers use kiye jate hain.
+
+## Private
+
+Private members directly access nahi kiye ja sakte.
+
+```cpp
+private:
+int roll;
+```
+
+## Public
+
+Public members outside class access kiye ja sakte hain.
+
+```cpp
+public:
+void display();
+```
+
+## Protected
+
+Inheritance me use hota hai.
+
+```cpp
+protected:
+int marks;
+```
 
 # What is an Object?
 
-An object is an instance of a class.
+Object class ka instance hota hai.
 
-Objects represent real entities.
+Object class ke data members aur member functions ko access kar sakta hai.
 
----
+## Definition
 
-# Real Life Example
+"An object is an instance of a class."
 
-Class:
-- Car
+Class blueprint hai.
 
-Objects:
-- BMW
-- Audi
-- Toyota
+Object actual entity hai.
 
-All cars have same structure but different values.
+## Example
 
----
+Agar Student ek class hai to:
+
+```text
+Rahul
+Mohan
+Priya
+```
+
+Student class ke objects ho sakte hain.
 
 # Object Declaration
 
-Object declaration means creating objects of a class.
+Object create karne ke liye class name use kiya jata hai.
 
----
-
-# Syntax
+## Syntax
 
 ```cpp
-ClassName objectName;
+ClassName object_name;
 ```
 
----
-
-# Example
+## Example
 
 ```cpp
 Student s1;
 ```
 
----
-
-# Multiple Objects
+Yahan:
 
 ```cpp
-Student s1,s2,s3;
+Student
 ```
 
----
+Class Name hai.
 
-# Example Program
+Aur
+
+```cpp
+s1
+```
+
+Object hai.
+
+# Accessing Class Members
+
+Object dot operator (.) ke through class members access karta hai.
+
+## Syntax
+
+```cpp
+object_name.member_name;
+```
+
+## Example
+
+```cpp
+s1.getData();
+s1.display();
+```
+
+# Working of Classes and Objects
+
+### Step 1
+
+Class define ki jati hai.
+
+### Step 2
+
+Object create kiya jata hai.
+
+### Step 3
+
+Object memory allocate karta hai.
+
+### Step 4
+
+Member functions call kiye jate hain.
+
+### Step 5
+
+Data process aur display kiya jata hai.
+
+# Advantages of Classes and Objects
+
+## Data Security
+
+Encapsulation provide karte hain.
+
+## Code Reusability
+
+Classes multiple objects create kar sakti hain.
+
+## Modularity
+
+Program small units me divide hota hai.
+
+## Easy Maintenance
+
+Large projects manage karna easy hota hai.
+
+## Real World Representation
+
+Real-world entities ko easily model kiya ja sakta hai.
+
+# Algorithm
+
+## Algorithm to Store and Display Student Information
+
+### Step 1
+
+Start Program.
+
+### Step 2
+
+Define Student Class.
+
+### Step 3
+
+Declare Data Members.
+
+### Step 4
+
+Create Input Function.
+
+### Step 5
+
+Create Display Function.
+
+### Step 6
+
+Create Object.
+
+### Step 7
+
+Input Student Details.
+
+### Step 8
+
+Display Student Details.
+
+### Step 9
+
+Stop Program.
+
+# Turbo C++ Program
 
 ```cpp
 #include<iostream.h>
 #include<conio.h>
 
-class Employee
+class Student
 {
-    public:
+    int roll;
+    char name[30];
+    float marks;
 
-    int id;
-    char name[20];
+public:
 
-    void input()
+    void getData()
     {
-        cout<<"Enter ID: ";
-        cin>>id;
+        cout<<"Enter Roll Number : ";
+        cin>>roll;
 
-        cout<<"Enter Name: ";
+        cout<<"Enter Name : ";
         cin>>name;
+
+        cout<<"Enter Marks : ";
+        cin>>marks;
     }
 
     void display()
     {
-        cout<<"\nID: "<<id;
-        cout<<"\nName: "<<name;
+        cout<<"\nStudent Information";
+        cout<<"\nRoll Number : "<<roll;
+        cout<<"\nName : "<<name;
+        cout<<"\nMarks : "<<marks;
     }
 };
 
 void main()
 {
-    Employee e1;
+    clrscr();
 
-    e1.input();
+    Student s1;
 
-    e1.display();
+    s1.getData();
+
+    s1.display();
 
     getch();
 }
 ```
 
----
+# Output
 
-# Explanation
+```text
+Enter Roll Number : 101
+Enter Name : Rahul
+Enter Marks : 88.5
 
-- `Employee` is class.
-- `e1` is object.
-- `input()` takes input.
-- `display()` shows output.
+Student Information
 
----
+Roll Number : 101
+Name : Rahul
+Marks : 88.5
+```
 
-# Constructors in C++
+# Applications of Classes and Objects
 
-A constructor is a special member function used to initialize objects automatically.
+Classes aur Objects modern software development ka foundation hain.
 
-Constructor name must be same as class name.
+### Banking Systems
 
-A constructor executes automatically when object is created.
+Customer aur Account management.
 
----
+### Hospital Management
 
-# Characteristics of Constructor
+Patient records maintain karne ke liye.
 
-- Same name as class
-- No return type
-- Called automatically
-- Used for initialization
+### Student Management Systems
 
----
+Student information store karne ke liye.
 
-# Why Constructors are Needed
+### E-Commerce Applications
 
-Without constructor, programmers must initialize objects manually every time.
+Products aur Orders manage karne ke liye.
 
-Constructors make initialization automatic.
+### Multimedia Applications
 
----
+Audio, Video aur Graphics objects handle karne ke liye.
 
-# Real Life Example
+### Game Development
 
-Suppose when you buy a mobile phone:
-- Battery already exists
-- Default apps already installed
-- Settings already initialized
+Characters aur game entities create karne ke liye.
 
-Similarly, constructor initializes object automatically.
+# Difference Between Class and Object
 
----
+## Class
 
-# Syntax of Constructor
+Class blueprint hoti hai.
+
+Memory allocate nahi karti.
+
+Logical entity hoti hai.
+
+## Object
+
+Object class ka instance hota hai.
+
+Memory allocate karta hai.
+
+Physical entity hoti hai.
+
+# Conclusion
+
+In conclusion, Classes aur Objects Object-Oriented Programming ke fundamental concepts hain. Class ek blueprint provide karti hai jo data members aur member functions ko organize karti hai, jabki Object us class ka actual instance hota hai jo memory allocate karta hai aur operations perform karta hai. Classes aur Objects data security, modularity, code reusability aur real-world modeling provide karte hain. Isi wajah se modern software development me inka extensive use kiya jata hai aur ye C++ programming ka foundation mana jata hai.
+
+
+
+
+# Q2. What are Constructors and Destructors? Explain Default Constructor, Parameterized Constructor, Copy Constructor, and Destructor with Suitable Programs.
+
+## Introduction
+
+Object-Oriented Programming me object creation aur object destruction ko manage karne ke liye C++ special member functions provide karta hai jinhe **Constructors** aur **Destructors** kaha jata hai. Ye functions object lifecycle management ke liye use hote hain.
+
+Jab bhi kisi class ka object create hota hai to constructor automatically call hota hai aur object ko initialize karta hai. Isi tarah jab object destroy hota hai ya program terminate hota hai to destructor automatically call hota hai aur allocated resources ko release karta hai.
+
+Constructors aur Destructors software development me bahut important role play karte hain kyunki ye automatic initialization aur cleanup facility provide karte hain. Banking systems, database software, multimedia applications aur game development me inka extensive use hota hai.
+
+# What is a Constructor?
+
+Constructor class ka special member function hota hai jo object create hote hi automatically execute hota hai.
+
+Constructor ka naam hamesha class ke naam ke same hota hai.
+
+## Definition
+
+"A constructor is a special member function that is automatically invoked when an object of a class is created."
+
+## Characteristics of Constructor
+
+### Same Name as Class
+
+Constructor ka naam class ke naam jaisa hi hota hai.
+
+### No Return Type
+
+Constructor kisi bhi type ka return value nahi deta.
+
+### Automatic Execution
+
+Object create hote hi automatically call hota hai.
+
+### Object Initialization
+
+Object ko initial values provide karta hai.
+
+## Syntax
 
 ```cpp
-class Demo
+class Student
 {
-    public:
+public:
 
-    Demo()
+    Student()
     {
-        statements;
+        // constructor body
     }
 };
 ```
 
----
+# Types of Constructors
+
+C++ me mainly following types ke constructors use hote hain:
+
+- Default Constructor
+- Parameterized Constructor
+- Copy Constructor
 
 # Default Constructor
 
-A constructor with no arguments is called default constructor.
+Default Constructor wo constructor hota hai jo koi argument receive nahi karta.
 
----
+Object create hote hi automatically execute hota hai aur default initialization perform karta hai.
 
-# Example Program
+## Syntax
+
+```cpp
+class Demo
+{
+public:
+
+    Demo()
+    {
+    }
+};
+```
+
+## Example Program
 
 ```cpp
 #include<iostream.h>
 #include<conio.h>
 
-class Test
+class Demo
 {
-    public:
+public:
 
-    Test()
+    Demo()
     {
-        cout<<"Constructor Called";
+        cout<<"Default Constructor Called";
     }
 };
 
 void main()
 {
-    Test t;
+    clrscr();
+
+    Demo d1;
 
     getch();
 }
 ```
 
----
-
-# Output
+## Output
 
 ```text
-Constructor Called
+Default Constructor Called
 ```
 
----
+## Advantages
 
-# Explanation
-
-As soon as object `t` is created, constructor runs automatically.
-
----
+- Automatic Initialization
+- Easy Implementation
+- Suitable for Small Programs
 
 # Parameterized Constructor
 
-A constructor with parameters is called parameterized constructor.
+Parameterized Constructor wo constructor hota hai jo arguments receive karta hai.
 
----
+Ye object creation ke time user-defined values initialize karne ke liye use hota hai.
 
-# Example Program
+## Definition
+
+"A constructor that accepts parameters is known as a Parameterized Constructor."
+
+## Syntax
+
+```cpp
+class Demo
+{
+public:
+
+    Demo(int x)
+    {
+    }
+};
+```
+
+## Example Program
 
 ```cpp
 #include<iostream.h>
@@ -443,7 +581,7 @@ class Student
 {
     int roll;
 
-    public:
+public:
 
     Student(int r)
     {
@@ -452,120 +590,170 @@ class Student
 
     void display()
     {
-        cout<<"Roll Number: "<<roll;
+        cout<<"Roll Number = "<<roll;
     }
 };
 
 void main()
 {
-    Student s(101);
+    clrscr();
 
-    s.display();
+    Student s1(101);
+
+    s1.display();
 
     getch();
 }
 ```
 
----
+## Output
 
-# Explanation
+```text
+Roll Number = 101
+```
 
-- Constructor accepts parameter.
-- Value initializes object.
+## Advantages
 
----
+### Flexible Initialization
 
-# Constructor Overloading
+Different values initialize ki ja sakti hain.
 
-Multiple constructors with different parameters.
+### Better Control
 
----
+Object creation ke time data assign hota hai.
 
-# Example Program
+### Reduced Coding
+
+Separate input function ki need kam ho jati hai.
+
+# Copy Constructor
+
+Copy Constructor ek existing object ki copy create karta hai.
+
+Jab ek object ko dusre object se initialize kiya jata hai tab copy constructor call hota hai.
+
+## Definition
+
+"A constructor that initializes an object using another object of the same class is known as a Copy Constructor."
+
+## Syntax
+
+```cpp
+ClassName(ClassName &obj)
+{
+}
+```
+
+## Example Program
 
 ```cpp
 #include<iostream.h>
 #include<conio.h>
 
-class Demo
+class Number
 {
-    public:
+    int num;
 
-    Demo()
+public:
+
+    Number(int n)
     {
-        cout<<"Default Constructor\n";
+        num=n;
     }
 
-    Demo(int x)
+    Number(Number &obj)
     {
-        cout<<"Parameterized Constructor";
+        num=obj.num;
+    }
+
+    void display()
+    {
+        cout<<"Number = "<<num<<endl;
     }
 };
 
 void main()
 {
-    Demo d1;
+    clrscr();
 
-    Demo d2(10);
+    Number n1(50);
+
+    Number n2(n1);
+
+    n1.display();
+    n2.display();
 
     getch();
 }
 ```
 
----
+## Output
 
-# Destructors in C++
+```text
+Number = 50
+Number = 50
+```
 
-Destructor is a special member function used to destroy objects.
+## Advantages
 
-It is automatically called when object goes out of scope.
+### Object Duplication
 
----
+Existing object ki copy create kar sakte hain.
 
-# Characteristics of Destructor
+### Easy Data Transfer
 
-- Same name as class
-- Starts with `~`
-- No return type
-- No parameters
-- Called automatically
+Objects ke beech data transfer easy ho jata hai.
 
----
+### Memory Management
 
-# Why Destructor is Needed
+Efficient object handling possible hoti hai.
 
-Destructor releases:
-- Memory
-- Files
-- Resources
+# What is a Destructor?
 
-It prevents memory wastage.
+Destructor class ka special member function hota hai jo object destroy hone par automatically call hota hai.
 
----
+Destructor allocated resources release karta hai.
 
-# Real Life Example
+## Definition
 
-Suppose after using classroom:
-- Lights turned off
-- Fans turned off
-- Doors closed
+"A destructor is a special member function that is automatically invoked when an object is destroyed."
 
-Similarly destructor cleans resources.
+## Characteristics of Destructor
 
----
+### Same Name as Class
 
-# Syntax of Destructor
+Class name ke saath tilde (~) use hota hai.
+
+### No Arguments
+
+Destructor koi argument receive nahi karta.
+
+### No Return Type
+
+Destructor return value nahi deta.
+
+### Automatic Execution
+
+Object destroy hone par automatically call hota hai.
+
+## Syntax
 
 ```cpp
 ~ClassName()
 {
-    statements;
 }
 ```
 
----
+## Example
 
-# Example Program
+```cpp
+~Demo()
+{
+    cout<<"Destructor Called";
+}
+```
+
+# Program Demonstrating Destructor
 
 ```cpp
 #include<iostream.h>
@@ -573,11 +761,11 @@ Similarly destructor cleans resources.
 
 class Demo
 {
-    public:
+public:
 
     Demo()
     {
-        cout<<"Constructor Called\n";
+        cout<<"Constructor Called"<<endl;
     }
 
     ~Demo()
@@ -588,542 +776,1764 @@ class Demo
 
 void main()
 {
-    Demo d;
+    clrscr();
+
+    Demo d1;
 
     getch();
 }
 ```
 
----
-
-# Output
+## Output
 
 ```text
 Constructor Called
 Destructor Called
 ```
 
----
+# Working of Constructor and Destructor
 
-# Dynamic Initialization of Objects
+### Step 1
 
-Dynamic initialization means initializing objects during runtime using constructors.
+Class define hoti hai.
 
-Values are provided while program runs.
+### Step 2
 
----
+Object create hota hai.
 
-# Example Program
+### Step 3
+
+Constructor automatically execute hota hai.
+
+### Step 4
+
+Program statements execute hoti hain.
+
+### Step 5
+
+Object destroy hota hai.
+
+### Step 6
+
+Destructor automatically execute hota hai.
+
+# Algorithm
+
+## Algorithm for Constructor Program
+
+### Step 1
+
+Start Program.
+
+### Step 2
+
+Create Class.
+
+### Step 3
+
+Define Constructor.
+
+### Step 4
+
+Create Object.
+
+### Step 5
+
+Constructor Automatically Execute Hoga.
+
+### Step 6
+
+Display Result.
+
+### Step 7
+
+Stop Program.
+
+## Algorithm for Destructor Program
+
+### Step 1
+
+Start Program.
+
+### Step 2
+
+Create Class.
+
+### Step 3
+
+Define Constructor and Destructor.
+
+### Step 4
+
+Create Object.
+
+### Step 5
+
+Execute Program.
+
+### Step 6
+
+Destroy Object.
+
+### Step 7
+
+Destructor Automatically Execute Hoga.
+
+### Step 8
+
+Stop Program.
+
+# Advantages of Constructors
+
+### Automatic Initialization
+
+Object create hote hi initialize ho jata hai.
+
+### Better Reliability
+
+Uninitialized objects ka problem nahi hota.
+
+### Code Reusability
+
+Initialization code repeatedly nahi likhna padta.
+
+### Easy Object Creation
+
+Object creation simple ho jata hai.
+
+# Advantages of Destructors
+
+### Automatic Cleanup
+
+Resources automatically release hote hain.
+
+### Memory Management
+
+Memory leaks avoid hote hain.
+
+### Resource Protection
+
+Files aur dynamic memory properly release hoti hai.
+
+# Difference Between Constructor and Destructor
+
+## Constructor
+
+Object create hone par call hota hai.
+
+Object initialize karta hai.
+
+Arguments receive kar sakta hai.
+
+Multiple constructors ho sakte hain.
+
+## Destructor
+
+Object destroy hone par call hota hai.
+
+Resources release karta hai.
+
+Arguments receive nahi karta.
+
+Class me sirf ek destructor hota hai.
+
+# Applications
+
+### Banking Software
+
+Account objects initialize karne ke liye.
+
+### Student Management Systems
+
+Student records create karne ke liye.
+
+### Database Applications
+
+Database connections manage karne ke liye.
+
+### Multimedia Software
+
+Audio aur video resources initialize aur release karne ke liye.
+
+### Game Development
+
+Game objects aur resources manage karne ke liye.
+
+# Conclusion
+
+In conclusion, Constructors aur Destructors C++ ke powerful special member functions hain jo object lifecycle management provide karte hain. Constructors object creation ke time automatic initialization perform karte hain, jabki Destructors object destruction ke time resource cleanup perform karte hain. Default Constructor, Parameterized Constructor aur Copy Constructor different initialization requirements ko fulfill karte hain. Destructors memory management aur resource handling ke liye essential hote hain. Modern Object-Oriented Programming me Constructors aur Destructors ka bahut important role hai aur efficient software development ke liye inka proper understanding zaruri hai.
+
+
+
+# Q3. Explain Dynamic Initialization of Objects. Write a C++ Program Demonstrating Dynamic Initialization Using Constructors.
+
+## Introduction
+
+Object-Oriented Programming me objects ko initialize karna bahut important hota hai. Normally object create karne ke baad values assign ki jati hain, lekin C++ me constructors ke through object creation ke time hi values initialize ki ja sakti hain. Jab object ki values run-time par user input ya calculated values ke basis par initialize ki jati hain, to ise **Dynamic Initialization of Objects** kaha jata hai.
+
+Dynamic Initialization C++ ka ek powerful feature hai jo object ko flexible aur efficient banata hai. Is technique me constructor arguments receive karta hai aur object ke data members ko run-time values ke according initialize karta hai.
+
+Banking Systems, Student Management Systems, Inventory Software, Multimedia Applications aur Game Development me Dynamic Initialization extensively use hota hai kyunki values pehle se fixed nahi hoti aur run-time par provide ki jati hain.
+
+# What is Dynamic Initialization of Objects?
+
+Dynamic Initialization ka matlab hai object ko run-time values ke through initialize karna.
+
+Yeh initialization constructor ke through ki jati hai.
+
+## Definition
+
+"Dynamic Initialization of Objects is the process of initializing object data members at run-time using constructors and user-supplied values."
+
+Static initialization me values compile-time par fixed hoti hain, jabki Dynamic Initialization me values execution ke dauran provide ki jati hain.
+
+# Need of Dynamic Initialization
+
+Real-world applications me data pehle se known nahi hota.
+
+Example:
+
+- Student Marks
+- Bank Account Balance
+- Employee Salary
+- Product Price
+
+Ye values user input karta hai ya database se aati hain.
+
+Isliye Dynamic Initialization ki zarurat padti hai.
+
+# Working of Dynamic Initialization
+
+Dynamic Initialization constructor aur parameters ki help se perform hoti hai.
+
+### Step 1
+
+Class define ki jati hai.
+
+### Step 2
+
+Parameterized Constructor create kiya jata hai.
+
+### Step 3
+
+User run-time par values provide karta hai.
+
+### Step 4
+
+Constructor values receive karta hai.
+
+### Step 5
+
+Data members initialize ho jate hain.
+
+### Step 6
+
+Object use ke liye ready ho jata hai.
+
+# Example of Dynamic Initialization
 
 ```cpp
-#include<iostream.h>
-#include<conio.h>
-
-class Interest
-{
-    float principal,rate,time;
-
-    public:
-
-    Interest(float p,float r,float t)
-    {
-        principal=p;
-        rate=r;
-        time=t;
-    }
-
-    void calculate()
-    {
-        float si;
-
-        si=(principal*rate*time)/100;
-
-        cout<<"Simple Interest: "<<si;
-    }
-};
-
-void main()
-{
-    Interest i(1000,5,2);
-
-    i.calculate();
-
-    getch();
-}
+Student s1(101,85);
 ```
 
----
+Yahan:
 
-# Explanation
+```cpp
+101
+85
+```
 
-Values initialize object dynamically during execution.
+Run-time values hain.
 
----
-
-# Real Life Example
-
-Suppose ATM asks:
-- Amount
-- PIN
-- Account number
-
-during runtime.
-
-Similarly dynamic initialization happens during execution.
-
----
-
-# Copy Constructor
-
-A copy constructor initializes one object using another object of same class.
-
----
+Constructor object ko initialize karega.
 
 # Syntax
 
+## Class Declaration
+
 ```cpp
-ClassName(ClassName &obj)
+class ClassName
 {
-}
+    data_members;
+
+public:
+
+    ClassName(arguments)
+    {
+        initialization;
+    }
+};
 ```
 
----
+## Object Creation
 
-# Why Copy Constructor is Used
+```cpp
+ClassName obj(value1,value2);
+```
 
-Used when:
-- One object copied into another
-- Passing object to function
-- Returning object from function
+# Dynamic Initialization Using Constructor
 
----
+Dynamic Initialization generally parameterized constructor ke through ki jati hai.
 
-# Example Program
+Example:
+
+```cpp
+class Student
+{
+    int roll;
+
+public:
+
+    Student(int r)
+    {
+        roll=r;
+    }
+};
+```
+
+Object:
+
+```cpp
+Student s1(101);
+```
+
+Object create hote hi roll initialize ho jayega.
+
+# Advantages of Dynamic Initialization
+
+## Flexible Object Creation
+
+Different objects different values receive kar sakte hain.
+
+## Better Data Handling
+
+Run-time data easily process kiya ja sakta hai.
+
+## Improved Security
+
+Object incomplete state me nahi rehta.
+
+## Reduced Coding
+
+Separate initialization functions ki need kam ho jati hai.
+
+## Better Program Design
+
+Object creation aur initialization ek hi step me ho jata hai.
+
+# Dynamic Initialization vs Static Initialization
+
+## Static Initialization
+
+Values fixed hoti hain.
+
+Example:
+
+```cpp
+int a=10;
+```
+
+Compile-time initialization hoti hai.
+
+## Dynamic Initialization
+
+Values run-time par milti hain.
+
+Example:
+
+```cpp
+Student s1(roll);
+```
+
+Run-time initialization hoti hai.
+
+# Example 1: Dynamic Initialization of Student Object
 
 ```cpp
 #include<iostream.h>
 #include<conio.h>
 
-class Demo
+class Student
 {
-    int x;
+    int roll;
+    float marks;
 
-    public:
+public:
 
-    Demo(int a)
+    Student(int r,float m)
     {
-        x=a;
-    }
-
-    Demo(Demo &obj)
-    {
-        x=obj.x;
+        roll=r;
+        marks=m;
     }
 
     void display()
     {
-        cout<<"Value: "<<x;
+        cout<<"Roll Number = "<<roll<<endl;
+        cout<<"Marks = "<<marks;
     }
 };
 
 void main()
 {
-    Demo d1(10);
+    clrscr();
 
-    Demo d2(d1);
+    Student s1(101,88.5);
 
-    d2.display();
+    s1.display();
 
     getch();
 }
 ```
 
----
+## Output
 
-# Explanation
-
-- `d1` stores value 10.
-- `d2(d1)` copies object.
-- Copy constructor executes automatically.
-
----
-
-# Operator Overloading
-
-Operator overloading means giving additional meaning to operators.
-
-C++ allows operators to work with user-defined objects.
-
----
-
-# Example
-
-Normally:
-```cpp
-10 + 20
+```text
+Roll Number = 101
+Marks = 88.5
 ```
 
-performs addition.
+# Dynamic Initialization Through User Input
 
-But with operator overloading:
+Real-world applications me values user se li jati hain.
+
+# Algorithm
+
+## Algorithm for Dynamic Initialization
+
+### Step 1
+
+Start Program.
+
+### Step 2
+
+Declare variables.
+
+### Step 3
+
+Input values from user.
+
+### Step 4
+
+Create class.
+
+### Step 5
+
+Create parameterized constructor.
+
+### Step 6
+
+Pass user values while creating object.
+
+### Step 7
+
+Display object data.
+
+### Step 8
+
+Stop Program.
+
+# Turbo C++ Program
+
+```cpp
+#include<iostream.h>
+#include<conio.h>
+
+class Student
+{
+    int roll;
+    float marks;
+
+public:
+
+    Student(int r,float m)
+    {
+        roll=r;
+        marks=m;
+    }
+
+    void display()
+    {
+        cout<<"\nStudent Information";
+        cout<<"\nRoll Number : "<<roll;
+        cout<<"\nMarks : "<<marks;
+    }
+};
+
+void main()
+{
+    clrscr();
+
+    int r;
+    float m;
+
+    cout<<"Enter Roll Number : ";
+    cin>>r;
+
+    cout<<"Enter Marks : ";
+    cin>>m;
+
+    Student s1(r,m);
+
+    s1.display();
+
+    getch();
+}
+```
+
+# Output
+
+```text
+Enter Roll Number : 101
+Enter Marks : 89.5
+
+Student Information
+
+Roll Number : 101
+Marks : 89.5
+```
+
+# Example 2: Dynamic Initialization of Bank Account
+
+```cpp
+#include<iostream.h>
+#include<conio.h>
+
+class Account
+{
+    float balance;
+
+public:
+
+    Account(float b)
+    {
+        balance=b;
+    }
+
+    void display()
+    {
+        cout<<"Balance = "<<balance;
+    }
+};
+
+void main()
+{
+    clrscr();
+
+    float amount;
+
+    cout<<"Enter Balance : ";
+    cin>>amount;
+
+    Account a1(amount);
+
+    a1.display();
+
+    getch();
+}
+```
+
+# Output
+
+```text
+Enter Balance : 5000
+
+Balance = 5000
+```
+
+# Applications of Dynamic Initialization
+
+Dynamic Initialization practical software development me extensively use hota hai.
+
+## Banking Systems
+
+Account balance initialize karne ke liye.
+
+## Student Management Systems
+
+Student information store karne ke liye.
+
+## Hospital Management Systems
+
+Patient records initialize karne ke liye.
+
+## Multimedia Applications
+
+Audio aur video properties initialize karne ke liye.
+
+## E-Commerce Software
+
+Product details initialize karne ke liye.
+
+## Game Development
+
+Game characters aur objects create karne ke liye.
+
+# Advantages of Dynamic Initialization
+
+### Run-Time Flexibility
+
+Values execution ke time provide ki ja sakti hain.
+
+### Better Object Control
+
+Object creation aur initialization ek saath hota hai.
+
+### Improved Reliability
+
+Uninitialized objects ka issue nahi hota.
+
+### Better Resource Utilization
+
+Required values ke according objects create hote hain.
+
+### Easy Maintenance
+
+Code simple aur manageable rehta hai.
+
+# Limitations
+
+### Constructor Dependency
+
+Parameterized constructor required hota hai.
+
+### User Input Errors
+
+Wrong values initialization ko affect kar sakti hain.
+
+### Slightly Complex
+
+Static initialization se thoda complex hota hai.
+
+# Real Life Example
+
+Bank Account Opening ko consider karo.
+
+Har customer ka:
+
+- Name
+- Account Number
+- Balance
+
+Different hota hai.
+
+Object creation ke time hi ye values assign karni padti hain.
+
+Ye Dynamic Initialization ka practical example hai.
+
+# Conclusion
+
+In conclusion, Dynamic Initialization of Objects C++ ka ek important feature hai jo constructors ke through objects ko run-time values ke saath initialize karne ki facility provide karta hai. Is technique me object creation aur initialization ek hi step me complete ho jata hai, jisse code efficient aur reliable ban jata hai. Dynamic Initialization flexibility, security aur better object management provide karta hai. Banking systems, multimedia applications, database systems aur modern software development me iska extensive use hota hai. Isliye Dynamic Initialization ko C++ Object-Oriented Programming ka ek essential concept mana jata hai.
+
+
+
+
+# Q4. Define Operator Overloading. Explain Rules and Advantages of Operator Overloading. Write Programs to Overload Unary Operator and Binary Operator.
+
+## Introduction
+
+C++ ki sabse powerful features me se ek feature **Operator Overloading** hai. Object-Oriented Programming me kai baar hume user-defined data types (objects) par bhi operators ka use karna padta hai. Normally operators jaise (+, -, *, ++, --) built-in data types ke liye kaam karte hain, lekin C++ hume in operators ko objects ke liye redefine karne ki facility deta hai.
+
+Isi process ko Operator Overloading kaha jata hai.
+
+Operator Overloading compile-time polymorphism ka example hai. Iske through operators ko new meaning diya ja sakta hai bina unke original purpose ko change kiye.
+
+For example:
+
+```cpp
+a + b
+```
+
+Integers ke liye addition karta hai.
+
+Lekin:
+
 ```cpp
 obj1 + obj2
 ```
 
-can also perform addition of objects.
+Objects ke liye bhi meaningful operation perform kar sakta hai.
 
----
+# What is Operator Overloading?
 
-# Why Operator Overloading is Needed
+Operator Overloading ek mechanism hai jisme existing operators ko user-defined objects ke liye redefine kiya jata hai.
 
-It makes programs:
-- More readable
-- Natural
-- Flexible
+## Definition
 
----
+"Operator Overloading is the process of giving additional meaning to an existing operator so that it can work with user-defined data types."
 
-# Operators That Can Be Overloaded
+Operator ka symbol same rehta hai lekin uska behavior programmer define karta hai.
+
+# Need of Operator Overloading
+
+Object-Oriented Programming me objects par operations perform karne ki zarurat hoti hai.
+
+Example:
+
+```cpp
+Complex C1,C2,C3;
+
+C3 = C1 + C2;
+```
+
+Normally compiler objects ko directly add nahi kar sakta.
+
+Operator Overloading ke through '+' operator ko complex number addition ke liye define kiya ja sakta hai.
+
+# Advantages of Operator Overloading
+
+## Better Readability
+
+Code natural aur easy to understand hota hai.
+
+Example:
+
+```cpp
+C3 = C1 + C2;
+```
+
+Instead of:
+
+```cpp
+C3 = add(C1,C2);
+```
+
+## Code Reusability
+
+Existing operators objects ke saath use kiye ja sakte hain.
+
+## Object-Oriented Design
+
+Objects ko real-world behavior milta hai.
+
+## Easy Programming
+
+Complex operations simple lagte hain.
+
+## Compile Time Polymorphism
+
+Operator Overloading compile-time polymorphism provide karti hai.
+
+# Rules of Operator Overloading
+
+Operator Overloading use karte waqt kuch important rules follow karne padte hain.
+
+## Rule 1
+
+Sirf existing operators overload kiye ja sakte hain.
+
+New operators create nahi kiye ja sakte.
+
+Valid:
+
+```cpp
++
+-
+*
+/
+```
+
+Invalid:
+
+```cpp
+**
+%%
+```
+
+## Rule 2
+
+Operator precedence change nahi ki ja sakti.
+
+## Rule 3
+
+Operator associativity change nahi ki ja sakti.
+
+## Rule 4
+
+At least ek operand user-defined type ka hona chahiye.
+
+## Rule 5
+
+Some operators overload nahi kiye ja sakte.
+
+### Non-Overloadable Operators
+
+```cpp
+::
+.
+.*
+?:
+sizeof
+```
+
+# Syntax of Operator Overloading
+
+## General Syntax
+
+```cpp
+return_type operator op(arguments)
+{
+    statements;
+}
+```
+
+## Example
+
+```cpp
+void operator ++()
+{
+}
+```
+
+# Types of Operator Overloading
+
+Mainly do types exam me pooche jate hain:
+
+## Unary Operator Overloading
+
+Single operand use karta hai.
 
 Examples:
-- +
-- -
-- *
-- /
-- ++
-- --
 
----
+```cpp
+++
+--
+-
+!
+```
+
+## Binary Operator Overloading
+
+Do operands use karta hai.
+
+Examples:
+
+```cpp
++
+-
+*
+/
+```
 
 # Unary Operator Overloading
 
-Unary operators work on one operand.
+Unary Operator ek operand par kaam karta hai.
 
-Examples:
-- ++
-- --
-- !
+Example:
 
----
+```cpp
+++a
+```
 
-# Example Program
+Operator Overloading ke through object ko increment kar sakte hain.
+
+# Algorithm (Unary Operator)
+
+### Step 1
+
+Start Program.
+
+### Step 2
+
+Create Class.
+
+### Step 3
+
+Declare Data Member.
+
+### Step 4
+
+Create Constructor.
+
+### Step 5
+
+Overload ++ Operator.
+
+### Step 6
+
+Create Object.
+
+### Step 7
+
+Apply ++ Operator.
+
+### Step 8
+
+Display Result.
+
+### Step 9
+
+Stop Program.
+
+# Program: Unary Operator Overloading (++)
 
 ```cpp
 #include<iostream.h>
 #include<conio.h>
 
-class Demo
+class Number
 {
-    int x;
+    int num;
 
-    public:
+public:
 
-    Demo()
+    Number()
     {
-        x=5;
+        num=10;
     }
 
     void operator ++()
     {
-        ++x;
+        ++num;
     }
 
     void display()
     {
-        cout<<"Value: "<<x;
+        cout<<"Number = "<<num;
     }
 };
 
 void main()
 {
-    Demo d;
+    clrscr();
 
-    ++d;
+    Number n1;
 
-    d.display();
+    ++n1;
+
+    n1.display();
 
     getch();
 }
 ```
 
----
+# Output
+
+```text
+Number = 11
+```
 
 # Explanation
 
-`++d` increases value of object member.
+Initial value:
 
----
+```cpp
+10
+```
+
+After:
+
+```cpp
+++n1;
+```
+
+Value becomes:
+
+```cpp
+11
+```
 
 # Binary Operator Overloading
 
-Binary operators work on two operands.
+Binary Operator do operands par operation perform karta hai.
 
-Examples:
-- +
-- -
-- *
-- /
+Example:
 
----
+```cpp
+a+b
+```
 
-# Example Program
+Objects ke liye bhi '+' operator overload kiya ja sakta hai.
+
+# Algorithm (Binary Operator)
+
+### Step 1
+
+Start Program.
+
+### Step 2
+
+Create Class.
+
+### Step 3
+
+Declare Data Member.
+
+### Step 4
+
+Create Constructor.
+
+### Step 5
+
+Overload + Operator.
+
+### Step 6
+
+Create Objects.
+
+### Step 7
+
+Add Objects.
+
+### Step 8
+
+Display Result.
+
+### Step 9
+
+Stop Program.
+
+# Program: Binary Operator Overloading (+)
 
 ```cpp
 #include<iostream.h>
 #include<conio.h>
 
-class Demo
+class Number
 {
-    int x;
+    int num;
 
-    public:
+public:
 
-    Demo()
+    Number()
     {
-        x=0;
+        num=0;
     }
 
-    Demo(int a)
+    Number(int n)
     {
-        x=a;
+        num=n;
     }
 
-    Demo operator +(Demo obj)
+    Number operator +(Number obj)
     {
-        Demo temp;
+        Number temp;
 
-        temp.x=x+obj.x;
+        temp.num=num+obj.num;
 
         return temp;
     }
 
     void display()
     {
-        cout<<"Value: "<<x;
+        cout<<"Number = "<<num;
     }
 };
 
 void main()
 {
-    Demo d1(10),d2(20),d3;
+    clrscr();
 
-    d3=d1+d2;
+    Number n1(10);
+    Number n2(20);
 
-    d3.display();
+    Number n3;
+
+    n3=n1+n2;
+
+    n3.display();
 
     getch();
 }
 ```
 
----
+# Output
+
+```text
+Number = 30
+```
 
 # Explanation
 
-`d1+d2` adds objects using overloaded operator.
+Objects:
 
----
+```cpp
+n1 = 10
+n2 = 20
+```
 
-# Data Conversion in C++
+Expression:
 
-Data conversion means changing one type into another.
+```cpp
+n3 = n1+n2;
+```
 
-Two types:
-1. Basic to class
-2. Class to basic
-3. Class to class
+Result:
 
----
+```cpp
+30
+```
 
-# Basic Type to Class Type Conversion
+# Working of Operator Overloading
 
-Converting normal data type into class object.
+Compiler internally overloaded operator ko function call me convert kar deta hai.
 
----
+Example:
 
-# Example Program
+```cpp
+n1+n2
+```
+
+Internally:
+
+```cpp
+n1.operator +(n2);
+```
+
+Execute hota hai.
+
+# Real Life Example
+
+Complex Number Addition:
+
+```cpp
+C3 = C1 + C2;
+```
+
+Vector Addition:
+
+```cpp
+V3 = V1 + V2;
+```
+
+Matrix Addition:
+
+```cpp
+M3 = M1 + M2;
+```
+
+Ye sab Operator Overloading ki wajah se possible hai.
+
+# Applications of Operator Overloading
+
+## Mathematical Software
+
+Complex number calculations.
+
+## Scientific Computing
+
+Vector aur matrix operations.
+
+## Graphics Applications
+
+Coordinate manipulation.
+
+## Multimedia Software
+
+Image processing calculations.
+
+## Game Development
+
+Position aur object calculations.
+
+## CAD Software
+
+Engineering design calculations.
+
+# Difference Between Function Overloading and Operator Overloading
+
+## Function Overloading
+
+Function name same hota hai.
+
+Different parameter list hoti hai.
+
+Example:
+
+```cpp
+add()
+```
+
+## Operator Overloading
+
+Operator symbol same hota hai.
+
+Different object behavior define hota hai.
+
+Example:
+
+```cpp
++
+```
+
+# Advantages
+
+### Natural Syntax
+
+Code readable lagta hai.
+
+### Easy Maintenance
+
+Programs simple rehte hain.
+
+### Better OOP Support
+
+Objects real-world entities ki tarah behave karte hain.
+
+### Reusable Code
+
+Operators multiple objects ke saath use kiye ja sakte hain.
+
+### Compile Time Efficiency
+
+Compiler compile time par resolve karta hai.
+
+# Limitations
+
+### Overuse Confusion Create Kar Sakta Hai
+
+### Debugging Difficult Ho Sakti Hai
+
+### Wrong Design Readability Reduce Kar Sakta Hai
+
+### Only Existing Operators Overload Ho Sakte Hain
+
+# Conclusion
+
+In conclusion, Operator Overloading C++ ka ek powerful feature hai jo existing operators ko user-defined objects ke liye redefine karne ki facility provide karta hai. Ye compile-time polymorphism ka important example hai aur code ko readable, reusable aur object-oriented banata hai. Unary aur Binary operators dono overload kiye ja sakte hain aur mathematical, scientific, multimedia aur graphics applications me extensively use hote hain. Operator Overloading modern C++ programming ka important concept hai jo real-world object behavior ko effectively represent karta hai.
+
+
+# Q5. Explain Data Type Conversion and Object Conversion in C++. Discuss Conversion: Basic Type → Class Type, Class Type → Basic Type, and Class Type → Another Class Type. Write Suitable C++ Programs for Each.
+
+## Introduction
+
+C++ ek powerful Object-Oriented Programming language hai jo built-in data types aur user-defined data types dono ko support karti hai. Real-world applications me kai baar different data types ke beech data transfer karna padta hai. Isi process ko **Data Type Conversion** kaha jata hai.
+
+C++ me conversion sirf basic data types ke beech hi nahi balki objects aur classes ke beech bhi possible hai. Constructors aur conversion functions ki help se programmer ek type ko dusre type me convert kar sakta hai.
+
+Object Conversion C++ ka important feature hai jo flexibility aur interoperability provide karta hai. Banking software, multimedia applications, graphics software aur database systems me data type conversion extensively use hota hai.
+
+# What is Data Type Conversion?
+
+Data Type Conversion ka matlab hai ek data type ki value ko kisi doosre data type me convert karna.
+
+## Definition
+
+"Data Type Conversion is the process of transforming data from one type to another."
+
+Example:
+
+```cpp
+int a = 10;
+
+float b = a;
+```
+
+Yahan integer value float me convert ho gayi.
+
+# Need of Data Type Conversion
+
+Programming me alag-alag data types use hote hain.
+
+Example:
+
+- Integer
+- Float
+- Double
+- Objects
+
+Inke beech data exchange karne ke liye conversion ki zarurat padti hai.
+
+# Types of Conversion in C++
+
+Object-Oriented Programming me mainly teen conversions important hain:
+
+### Basic Type → Class Type
+
+### Class Type → Basic Type
+
+### Class Type → Another Class Type
+
+# 1. Basic Type → Class Type Conversion
+
+## Introduction
+
+Jab kisi built-in data type ki value ko class object me convert kiya jata hai to ise Basic Type to Class Type Conversion kehte hain.
+
+Ye conversion generally constructor ke through perform ki jati hai.
+
+## Definition
+
+"Conversion of a built-in data type into an object of a class is known as Basic Type to Class Type Conversion."
+
+# Working
+
+### Step 1
+
+Basic type value available hoti hai.
+
+### Step 2
+
+Parameterized constructor receive karta hai.
+
+### Step 3
+
+Object initialize ho jata hai.
+
+# Syntax
+
+```cpp
+ClassName object = value;
+```
+
+Ya
+
+```cpp
+ClassName object(value);
+```
+
+# Program: Basic Type → Class Type
 
 ```cpp
 #include<iostream.h>
 #include<conio.h>
 
-class Demo
+class Number
 {
-    int x;
+    int num;
 
-    public:
+public:
 
-    Demo(int a)
+    Number(int n)
     {
-        x=a;
+        num=n;
     }
 
     void display()
     {
-        cout<<"Value: "<<x;
+        cout<<"Number = "<<num;
     }
 };
 
 void main()
 {
-    Demo d=10;
+    clrscr();
 
-    d.display();
+    int x=50;
+
+    Number n1=x;
+
+    n1.display();
 
     getch();
 }
 ```
 
----
+# Output
+
+```text
+Number = 50
+```
 
 # Explanation
 
-Integer automatically converts into object.
+Integer value:
 
----
+```cpp
+50
+```
 
-# Class to Basic Type Conversion
+Constructor ke through object me convert ho gayi.
 
-Converting object into normal data type.
+# Advantages
 
----
+### Easy Object Creation
 
-# Example Program
+### Automatic Conversion
+
+### Better Flexibility
+
+# 2. Class Type → Basic Type Conversion
+
+## Introduction
+
+Kabhi-kabhi object ki value ko basic data type me convert karna padta hai.
+
+Ye conversion conversion function ke through perform hoti hai.
+
+## Definition
+
+"Conversion of an object into a built-in data type is known as Class Type to Basic Type Conversion."
+
+# Conversion Function
+
+Conversion function special member function hota hai.
+
+## Syntax
+
+```cpp
+operator data_type()
+{
+}
+```
+
+## Example
+
+```cpp
+operator int()
+{
+    return num;
+}
+```
+
+# Working
+
+### Step 1
+
+Object create hota hai.
+
+### Step 2
+
+Conversion operator call hota hai.
+
+### Step 3
+
+Object value basic type me convert ho jati hai.
+
+# Program: Class Type → Basic Type
 
 ```cpp
 #include<iostream.h>
 #include<conio.h>
 
-class Demo
+class Number
 {
-    int x;
+    int num;
 
-    public:
+public:
 
-    Demo()
+    Number(int n)
     {
-        x=50;
+        num=n;
     }
 
     operator int()
     {
-        return x;
+        return num;
     }
 };
 
 void main()
 {
-    Demo d;
+    clrscr();
 
-    int a;
+    Number n1(100);
 
-    a=d;
+    int x;
 
-    cout<<"Value: "<<a;
+    x=n1;
+
+    cout<<"Value = "<<x;
 
     getch();
 }
 ```
 
----
+# Output
+
+```text
+Value = 100
+```
 
 # Explanation
 
-Object converts into integer.
+Object:
 
----
+```cpp
+n1
+```
 
-# Class to Class Conversion
+Conversion operator ke through integer me convert ho gaya.
 
-Converting one class object into another class object.
+# Advantages
 
----
+### Easy Data Extraction
 
-# Example Program
+### Better Compatibility
+
+### Flexible Programming
+
+# 3. Class Type → Another Class Type Conversion
+
+## Introduction
+
+Kai situations me ek class ke object ko doosri class ke object me convert karna padta hai.
+
+Example:
+
+```text
+Rupee → Dollar
+
+Meter → Centimeter
+```
+
+Ye conversion constructor aur conversion function ki help se ki jati hai.
+
+## Definition
+
+"Conversion of an object of one class into an object of another class is known as Class Type to Another Class Type Conversion."
+
+# Working
+
+### Step 1
+
+Source Class Object create hota hai.
+
+### Step 2
+
+Conversion Function value return karta hai.
+
+### Step 3
+
+Target Class Constructor value receive karta hai.
+
+### Step 4
+
+New Object initialize ho jata hai.
+
+# Program: Class Type → Another Class Type
 
 ```cpp
 #include<iostream.h>
 #include<conio.h>
 
-class B;
-
 class A
 {
-    int x;
+    int num;
 
-    public:
+public:
 
     A()
     {
-        x=100;
+        num=50;
     }
 
-    int getX()
+    int getValue()
     {
-        return x;
+        return num;
     }
 };
 
 class B
 {
-    int y;
+    int value;
 
-    public:
-
-    B()
-    {
-        y=0;
-    }
+public:
 
     B(A obj)
     {
-        y=obj.getX();
+        value=obj.getValue();
     }
 
     void display()
     {
-        cout<<"Value: "<<y;
+        cout<<"Value = "<<value;
     }
 };
 
 void main()
 {
-    A a;
+    clrscr();
 
-    B b=a;
+    A objA;
 
-    b.display();
+    B objB=objA;
+
+    objB.display();
 
     getch();
 }
 ```
 
----
+# Output
+
+```text
+Value = 50
+```
 
 # Explanation
 
-Object of class A converts into object of class B.
+Object:
 
----
+```cpp
+objA
+```
 
-# Important Points to Remember
+Class A se Class B me convert hua.
 
-- Class is blueprint.
-- Object is instance of class.
-- Constructors initialize objects.
-- Destructors destroy objects.
-- Copy constructor copies objects.
-- Dynamic initialization happens during runtime.
-- Operator overloading gives extra meaning to operators.
-- Unary operators use one operand.
-- Binary operators use two operands.
-- Data conversion changes type of data or objects.
+# Algorithm
 
----
+## Algorithm for Basic Type → Class Type
+
+### Step 1
+
+Start Program.
+
+### Step 2
+
+Create Class.
+
+### Step 3
+
+Create Parameterized Constructor.
+
+### Step 4
+
+Declare Integer Variable.
+
+### Step 5
+
+Convert Integer into Object.
+
+### Step 6
+
+Display Result.
+
+### Step 7
+
+Stop Program.
+
+# Algorithm for Class Type → Basic Type
+
+### Step 1
+
+Start Program.
+
+### Step 2
+
+Create Class.
+
+### Step 3
+
+Create Conversion Operator.
+
+### Step 4
+
+Create Object.
+
+### Step 5
+
+Convert Object into Integer.
+
+### Step 6
+
+Display Result.
+
+### Step 7
+
+Stop Program.
+
+# Algorithm for Class Type → Another Class Type
+
+### Step 1
+
+Start Program.
+
+### Step 2
+
+Create Source Class.
+
+### Step 3
+
+Create Target Class.
+
+### Step 4
+
+Create Conversion Constructor.
+
+### Step 5
+
+Create Source Object.
+
+### Step 6
+
+Convert into Target Object.
+
+### Step 7
+
+Display Result.
+
+### Step 8
+
+Stop Program.
+
+# Applications of Data Type Conversion
+
+## Banking Systems
+
+Currency conversion ke liye.
+
+## Multimedia Applications
+
+Audio aur video data conversion ke liye.
+
+## Graphics Software
+
+Coordinate conversion ke liye.
+
+## Database Systems
+
+Different data formats handle karne ke liye.
+
+## Scientific Applications
+
+Measurement conversions ke liye.
+
+## Game Development
+
+Object property conversions ke liye.
+
+# Advantages of Object Conversion
+
+### Flexibility
+
+Different types ke beech communication possible hoti hai.
+
+### Better Reusability
+
+Existing classes ko reuse kiya ja sakta hai.
+
+### Easy Data Exchange
+
+Classes aur basic types ke beech transfer easy ho jata hai.
+
+### Improved Program Design
+
+Code modular aur maintainable banta hai.
+
+# Limitations
+
+### Improper Conversion Errors
+
+Wrong conversions logical errors create kar sakti hain.
+
+### Increased Complexity
+
+Program thoda complex ho sakta hai.
+
+### Ambiguity
+
+Multiple conversion paths confusion create kar sakte hain.
+
+# Difference Between the Three Conversions
+
+## Basic Type → Class Type
+
+Built-in value object me convert hoti hai.
+
+Constructor use hota hai.
+
+## Class Type → Basic Type
+
+Object built-in type me convert hota hai.
+
+Conversion Operator use hota hai.
+
+## Class Type → Another Class Type
+
+Ek object doosre object me convert hota hai.
+
+Constructor aur Conversion Function dono use ho sakte hain.
 
 # Conclusion
 
-Classes and objects are the heart of Object Oriented Programming. Constructors and destructors help in automatic initialization and cleanup of objects. Copy constructors and dynamic initialization improve flexibility in object management.
-
-Operator overloading makes C++ more powerful by allowing operators to work with objects naturally. Data conversion between objects and basic types increases compatibility and flexibility.
-
-These concepts are extremely important because advanced C++ programming and real-world software development heavily depend on them.
+In conclusion, Data Type Conversion aur Object Conversion C++ ke important features hain jo different data types aur classes ke beech communication provide karte hain. Basic Type → Class Type conversion constructors ke through hoti hai, Class Type → Basic Type conversion conversion operators ke through hoti hai aur Class Type → Another Class Type conversion constructors aur conversion functions ki help se implement ki jati hai. Ye techniques flexibility, reusability aur efficient data handling provide karti hain. Modern software development, multimedia systems, banking applications aur scientific computing me inka extensive use hota hai. Isliye Data Type Conversion C++ Object-Oriented Programming ka ek essential concept mana jata hai.
